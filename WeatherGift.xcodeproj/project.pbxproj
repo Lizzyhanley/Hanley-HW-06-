@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E8058EA28C03E5E1F76E58 /* Pods_WeatherGift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024A8B054434EADCDEFCDAF1 /* Pods_WeatherGift.framework */; };
 		7E19D4AE1E88506400DC1870 /* WeatherLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19D4AD1E88506400DC1870 /* WeatherLocation.swift */; };
+		7E19D4B01E888CBE00DC1870 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19D4AF1E888CBE00DC1870 /* Constants.swift */; };
 		7E52FAC41E7C36BE00966A32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52FAC31E7C36BE00966A32 /* AppDelegate.swift */; };
 		7E52FAC91E7C36BE00966A32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E52FAC71E7C36BE00966A32 /* Main.storyboard */; };
 		7E52FACB1E7C36BF00966A32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E52FACA1E7C36BF00966A32 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		024A8B054434EADCDEFCDAF1 /* Pods_WeatherGift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherGift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E19D4AD1E88506400DC1870 /* WeatherLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocation.swift; sourceTree = "<group>"; };
+		7E19D4AF1E888CBE00DC1870 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7E52FAC01E7C36BE00966A32 /* WeatherGift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherGift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E52FAC31E7C36BE00966A32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E52FAC81E7C36BE00966A32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				7E19D4AD1E88506400DC1870 /* WeatherLocation.swift */,
 				7E52FAD91E7C410200966A32 /* PageVC.swift */,
 				7E52FAD51E7C37A700966A32 /* DetailVC.swift */,
+				7E19D4AF1E888CBE00DC1870 /* Constants.swift */,
 				7E52FAD71E7C3DA700966A32 /* ListVC.swift */,
 				7E52FAC71E7C36BE00966A32 /* Main.storyboard */,
 				7E52FACA1E7C36BF00966A32 /* Assets.xcassets */,
@@ -226,6 +229,7 @@
 				7E52FADA1E7C410200966A32 /* PageVC.swift in Sources */,
 				7E52FAC41E7C36BE00966A32 /* AppDelegate.swift in Sources */,
 				7E52FAD61E7C37A700966A32 /* DetailVC.swift in Sources */,
+				7E19D4B01E888CBE00DC1870 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

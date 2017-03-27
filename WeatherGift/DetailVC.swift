@@ -29,13 +29,28 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        
         if currentPage == 0 {
             getLocation()
         }
+        locationsArray[currentPage].getWeather {
+            self.updateUserInterface()
+        }
         
+}
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        if currentPage == 0 {
+//            getLocation()
+//        }
+//        
+//    }
+    
+    func updateUserInterface() {
         locationLabel.text = locationsArray[currentPage].name
         dateLabel.text = locationsArray[currentPage].coordinates
+        let curTemperature = String(format: "%3.f", locationsArray[currentPage].currentTemp) + "°"
+        temperatureLabel.text = curTemperature
     }
 }
 
@@ -59,21 +74,47 @@ extension DetailVC: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
         handleLocationAuthorizationStatus(status: status)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        currentLocation = locations.last
-        
-        let currentLat = "\(currentLocation.coordinate.latitude)"
-        let currentLong = "\(currentLocation.coordinate.longitude)"
-        
-        print("Coordinates are: " + currentLat + currentLong)
-        locationManager.startUpdatingLocation()
+        if currentPage == 0 {
+            
+            let geoCoder = CLGeocoder()
+            
+            currentLocation = locations.last
+            
+            let currentLat = "\(currentLocation.coordinate.latitude)"
+            let currentLong = "\(currentLocation.coordinate.longitude)"
+            
+            print("Coordinates are: " + currentLat + currentLong)
+            
+            
+            var place = ""
+            geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {placemarks, error in
+                if placemarks != nil {
+                let placemark = placemarks!.last
+                place = (placemark?.name!)!
+            } else {
+                print("Error retriving place. Error code: \(error)")
+                place = "Parts Unknown"
+            }
+                print(place)
+                
+                self.locationsArray[0].name = place
+                self.locationsArray[0].coordinates = currentLat + ", " + currentLong
+                self.locationsArray[0].getWeather {
+                    self.updateUserInterface()
+                }
+        })
     }
+    locationManager.startUpdatingLocation()
+}
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
     }
+
 }
