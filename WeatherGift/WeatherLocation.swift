@@ -13,7 +13,8 @@ import SwiftyJSON
 class WeatherLocation {
     var name = ""
     var coordinates = ""
-    var currentTemp = -990.9
+    var currentTemp = -999.9
+    var dailySummary = ""
     
     func getWeather(completed: @escaping () -> ()) {
         
@@ -29,6 +30,12 @@ class WeatherLocation {
                      self.currentTemp = temperature
                 } else {
                     print("Can't return temp.")
+                }
+                if  let summary = json["daily"]["summary"].string {
+                    print("SUMMARY inside getWeather = \(summary)")
+                    self.dailySummary = summary
+                } else {
+                    print("Can't return summary.")
                 }
             case .failure(let error):
                 print(error)

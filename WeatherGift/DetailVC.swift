@@ -29,28 +29,34 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        if currentPage == 0 {
-            getLocation()
-        }
+        
         locationsArray[currentPage].getWeather {
             self.updateUserInterface()
         }
         
 }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        if currentPage == 0 {
-//            getLocation()
-//        }
-//        
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if currentPage == 0 {
+            getLocation()
+        }
+        
+    }
     
     func updateUserInterface() {
+        
+        let isHidden = (locationsArray[currentPage].currentTemp == -999.9)
+        temperatureLabel.isHidden = isHidden
+        locationLabel.isHidden = isHidden
+        
+        
         locationLabel.text = locationsArray[currentPage].name
         dateLabel.text = locationsArray[currentPage].coordinates
         let curTemperature = String(format: "%3.f", locationsArray[currentPage].currentTemp) + "°"
         temperatureLabel.text = curTemperature
+        print("%%%% curTemperature inside updateUserInterface = \(curTemperature)")
+        summaryLabel.text = locationsArray[currentPage].dailySummary
     }
 }
 
@@ -106,7 +112,7 @@ extension DetailVC: CLLocationManagerDelegate {
                 self.locationsArray[0].name = place
                 self.locationsArray[0].coordinates = currentLat + ", " + currentLong
                 self.locationsArray[0].getWeather {
-                    self.updateUserInterface()
+                self.updateUserInterface()
                 }
         })
     }
