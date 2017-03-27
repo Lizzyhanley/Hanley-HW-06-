@@ -134,8 +134,8 @@ extension ListVC: UITableViewDataSource, UITableViewDelegate {
         newLocation.name = place.name
         let lat = place.coordinate.latitude
         let long = place.coordinate.longitude
-        newLocation.coordinates = "\(lat), \(long)"
-        print(newLocation.coordinates)
+        newLocation.coordinates = "\(lat),\(long)"
+        print("COORD: \(newLocation.coordinates)")
         locationsArray.append(newLocation)
         tableView.reloadData()
     }

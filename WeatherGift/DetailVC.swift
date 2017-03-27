@@ -57,6 +57,7 @@ class DetailVC: UIViewController {
         temperatureLabel.text = curTemperature
         print("%%%% curTemperature inside updateUserInterface = \(curTemperature)")
         summaryLabel.text = locationsArray[currentPage].dailySummary
+        print("\(locationLabel.text)")
     }
 }
 
@@ -64,6 +65,7 @@ extension DetailVC: CLLocationManagerDelegate {
     
     func getLocation() {
         let status = CLLocationManager.authorizationStatus()
+        handleLocationAuthorizationStatus(status: status)
     }
     
     func handleLocationAuthorizationStatus(status: CLAuthorizationStatus) {
@@ -110,7 +112,7 @@ extension DetailVC: CLLocationManagerDelegate {
                 print(place)
                 
                 self.locationsArray[0].name = place
-                self.locationsArray[0].coordinates = currentLat + ", " + currentLong
+                self.locationsArray[0].coordinates = currentLat + "," + currentLong
                 self.locationsArray[0].getWeather {
                 self.updateUserInterface()
                 }
